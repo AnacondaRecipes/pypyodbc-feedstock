@@ -1,23 +1,26 @@
 {% set name = "pypyodbc" %}
-{% set version = "1.3.5" %}
+{% set version = "1.3.6" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.2.zip"
-  sha256: 90a9a1fdbe5c06b875155d82562beb50bb22743190ca9b46a2cb71030ee65496
+  # Use GH for LICENSE file and upstream tests
+  url: https://github.com/pypyodbc/pypyodbc/archive/refs/tags/v1.3.6.tar.gz
+  sha256: 14cdc66381c4204578f78512f0eb24515e0ab114f8de0cf398862a53407d99a2
 
 build:
-  number: 5
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
     - python
-    - unixodbc  # [unix]
+    - setuptools
+    - wheel
+    #- unixodbc  # [unix]
   run:
     - python
 
@@ -26,14 +29,13 @@ test:
     - pypyodbc
 
 about:
-  home: "https://github.com/jiangwen365/pypyodbc"
+  home: https://github.com/pypyodbc/pypyodbc
   license: MIT
   license_family: MIT
-  # https://github.com/jiangwen365/pypyodbc/issues/58
-  license_file: {{ RECIPE_DIR }}/LICENSE.txt
-  summary: "PyPyODBC - A Pure Python ODBC module by ctypes"
-  doc_url: https://github.com/jiangwen365/pypyodbc/wiki
-  dev_url: https://github.com/jiangwen365/pypyodbc
+  license_file: LICENSE
+  summary: A pure Python Cross Platform ODBC interface module
+  doc_url: https://github.com/pypyodbc/pypyodbc/wiki
+  dev_url: https://github.com/pypyodbc/pypyodbc
 
 extra:
   recipe-maintainers:
