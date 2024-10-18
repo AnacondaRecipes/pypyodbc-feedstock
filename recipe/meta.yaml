@@ -6,7 +6,7 @@ package:
   version: "{{ version }}"
 
 source:
-  # Use GH for LICENSE file and upstream tests
+  # Use GH for LICENSE file
   url: https://github.com/pypyodbc/pypyodbc/archive/refs/tags/v1.3.6.tar.gz
   sha256: 14cdc66381c4204578f78512f0eb24515e0ab114f8de0cf398862a53407d99a2
 
@@ -20,13 +20,17 @@ requirements:
     - python
     - setuptools
     - wheel
-    #- unixodbc  # [unix]
+    - unixodbc          # [unix]
   run:
     - python
 
 test:
   imports:
     - pypyodbc
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/pypyodbc/pypyodbc
