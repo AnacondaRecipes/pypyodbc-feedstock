@@ -7,7 +7,7 @@ package:
 
 source:
   # Use GH for LICENSE file
-  url: https://github.com/pypyodbc/pypyodbc/archive/refs/tags/v1.3.6.tar.gz
+  url: https://github.com/pypyodbc/pypyodbc/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 14cdc66381c4204578f78512f0eb24515e0ab114f8de0cf398862a53407d99a2
 
 build:
